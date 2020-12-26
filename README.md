@@ -6,5 +6,7 @@ It's used basic models (linear model and kNN) to build a prediction.
 
 Authors:
 https://github.com/happyhooter
+
 https://github.com/dronovartem
+
 https://github.com/korowood
