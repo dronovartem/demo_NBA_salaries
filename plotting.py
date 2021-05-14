@@ -25,8 +25,8 @@ def plot_power_angle(df):
     fig = px.line_polar(polar_df, r="value", theta="Skills", color='Player', line_close=True,
                     color_discrete_sequence=px.colors.sequential.Plasma_r,
                     template="gridon", 
-                    animation_frame="Игрок",
-                    animation_group="Игрок",
+                    animation_frame="Player",
+                    animation_group="Player",
                     title='Распределение навыков для ближайших игроков'
                    )
     return fig
