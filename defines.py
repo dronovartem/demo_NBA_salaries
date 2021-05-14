@@ -14,7 +14,7 @@ INTEGER_FEATURES = ["NBA_DraftNumber", "Age"]
 SEASON_GAMES_COUNT = 82 # i scale MP written as a season playing time to average per game
 
 # set a name for default unfamous player
-ABSTRACT_PLAYER = 'Abstract player' 
+ABSTRACT_PLAYER = 'Абстрактный игрок'
 
 # define bounds and initial filling for sliders
 DEFAULT_FEATURES_RANGE = pd.DataFrame({
@@ -26,14 +26,13 @@ DEFAULT_FEATURES_RANGE = pd.DataFrame({
 MODEL_MIN_VALUE = 46080
 
 __FEATURES_EXPLANATION = [
-    "Position of player in NBA draft before his first season in league. ",
-    "Player age on February 1 of the given season.",
-    "Average minutes played per game during the previous season.",
-    "Player Efficiency Rate (PER) - The PER sums up all a player's positive accomplishments, \
-    subtracts the negative accomplishments, and returns a per-minute rating of a player's performance.",
-    "Usage percentage is an estimate of the percentage of team plays used by a player while he was on the floor.",
-    "Box Plus/Minus. A box score estimate of the points per 100 possessions that a player contributed \
-         above a league-average player, translated to an average team."
+    "Позиция игрока на драфте НБА перед его первым сезоном в лиге. ",
+    "Возраст игрока на 1 февраля текущего сезона.",
+    "Среднее количество минут за игру в предыдущем сезоне.",
+    "Коэффициент эффективности игрока (PER) - PER суммирует все положительные достижения игрока, \
+    вычитает отрицательные достижения и возвращает поминутный рейтинг эффективности игрока.",
+    "Процент использования - это оценка процента командных игр, когда игрок находился на площадке.",
+    "Плюс-минус на площадке."
 ]
 
 FEATURES_DOC_STRING = {k: v for k, v in zip(DEFAULT_CONTROL_FEATURES, __FEATURES_EXPLANATION)}

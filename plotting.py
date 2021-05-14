@@ -9,10 +9,10 @@ df here - already sorted by Salary with all required fields
 def plot_salaries_hist(df):
     fig = px.bar(
         df,
-        x='Player', 
-        y='Salary',
+        x='Игрок',
+        y='Зарплата',
         template='ggplot2',
-        title='Salaries of top5 closest players')
+        title='Зарплаты топ-5 ближайших по характеристикам игроков')
     return fig
 
 def plot_power_angle(df):
@@ -25,9 +25,9 @@ def plot_power_angle(df):
     fig = px.line_polar(polar_df, r="value", theta="Skills", color='Player', line_close=True,
                     color_discrete_sequence=px.colors.sequential.Plasma_r,
                     template="gridon", 
-                    animation_frame="Player",
-                    animation_group="Player",
-                    title='Skills distribution for nearest players'
+                    animation_frame="Игрок",
+                    animation_group="Игрок",
+                    title='Распределение навыков для ближайших игроков'
                    )
     return fig
 
@@ -43,7 +43,7 @@ def foo_point_leader(df):
         color='Points',
         color_continuous_scale = px.colors.sequential.Reds,
         template='ggplot2',
-        title='Season top20 scorers')
+        title='20 лучших бомбардиров сезона')
     return fig
 
 def __add_cols(df, *args):
@@ -72,7 +72,7 @@ def top_20_point(df):
         color_discrete_sequence=px.colors.sequential.Reds,
         size=size, 
         hover_name='Player',
-        title='Points attempt ratio influence on game score',
+        title='Влияние соотношения очков и попыток на счет игры',
         trendline='ols',
         template='gridon'
     )

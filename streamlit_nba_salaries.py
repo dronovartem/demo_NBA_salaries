@@ -51,15 +51,15 @@ def __create_features_initial_filling(player):
         
 def setup_sidebar(player):
     bar = st.sidebar
-    is_advanced_mode_checkbox = bar.checkbox('Show advanced settings')
+    is_advanced_mode_checkbox = bar.checkbox('Показать дополнительные настройки')
     bar.write(
-        """With using this option, you will be able to estimate
-        how different player's parameters affect fees cost.
+        """Используя эту опцию, вы сможете оценить, как разные
+         параметры игрока влияют на его зарплату в лиге.
         """)
     features = __create_features_initial_filling(player)
     control_features = DEFAULT_PICKED_ADVANCED_FEATURES
     if is_advanced_mode_checkbox:
-        control_features = bar.multiselect( 'Add another feature to control',
+        control_features = bar.multiselect( 'Добавить еще один параметр',
            DEFAULT_CONTROL_FEATURES, DEFAULT_PICKED_ADVANCED_FEATURES)
         for feature in control_features:
             if feature in INTEGER_FEATURES:
@@ -81,19 +81,20 @@ def setup_sidebar(player):
     return features
 
 def setup_page_preview():
-    st.title("NBA salaries prediction demo")
-    """This is a test model aims to predict NBA player salaries based on their 
-    statistic in 2017-2018 season. """
-    """Follow the instructions below to calculate a prediction.
+    st.title("Веб-сервис для прогнозирования зарплат профессиональных спортсменов")
+    """Этот сервис предназначен для прогнозирования заработной платы
+     игроков НБА на основе их статистики в сезоне 2017-2018 годов."""
+    """Следуйте приведенным ниже инструкциям, чтобы рассчитать прогноз.
     """
-    st.title("*1. Enter player name.*")
-    """You may choose any active player, or if you want, you could set up a player with your own parameters.
-    In this case, you should either select 'Abstract player' or set up advanced settings for any player."""
+    st.title("*1. Введите имя игрока.*")
+    """Вы можете выбрать любого активного игрока или, если хотите, настроить игрока со своими параметрами.
+    В этом случае вы должны либо выбрать «Абстрактный игрок», либо установить
+     дополнительные настройки для любого активного игрока."""
     #player = st.text_input("", '')
     player = st.selectbox("", [ABSTRACT_PLAYER] + __get_unique_players_list())
-    """Optional. You may set player's parameters in the sidebar in the left part of the screen.
-    It may help you to understand the importance of different stats for player's salary. """
-    st.title("*2. When you're ready, press the button. *")
+    """Опционально. Вы можете установить параметры игрока на боковой панели в левой части экрана.
+     Это может помочь вам понять важность различных показателей для заработной платы игрока."""
+    st.title("*2. Когда будете готовы, нажмите кнопку. *")
     return player
 
 def get_salary_prediction(feature_values):
@@ -119,7 +120,7 @@ def get_nearest_players(player, feature_values):
 def create_output(player, feature_values):
     # logically separate field for output
     # perform result based on button click
-    if st.button('Predict'):
+    if st.button('Предсказать'):
         # get closest players
         neighs = get_nearest_players(player, feature_values)
         # plot what we decided to plot
@@ -130,18 +131,18 @@ def create_output(player, feature_values):
         with right_col:
             fig = plot_power_angle(neighs)
             st.write(fig)
-            st.write("*PER - Player efficiency rate*")
-            st.write("*BPM - box plus minus*")
-            st.write("*USG% - usage percentage*")
-            st.write("For details - visit https://www.basketball-reference.com/about/glossary.html")
+            st.write("*PER - Коэффициент эффективности игрока*")
+            st.write("*BPM - Плюс-минус на площадке*")
+            st.write("*USG% - Процент использования*")
+            st.write("Для более детальной информации https://www.basketball-reference.com/about/glossary.html")
             # base salary prediction
         predicted_salary = get_salary_prediction(feature_values)
-        st.success("Predicted salary for " + player + ": " + str(predicted_salary) + " $")
-    st.title("*3. Enjoy! *")
+        st.success("Прогнозируемая зарплата для " + player + ": " + str(predicted_salary) + " $")
+    st.title("*3. Пользуйтесь! *")
 
 def show_league_stat():
     stats_dataset = read_stats_dataset()
-    is_show_league_stat = st.checkbox('Show me some league facts')
+    is_show_league_stat = st.checkbox('Покажи мне некоторые факты о лиге')
     if is_show_league_stat:
         left_col, right_col = st.beta_columns(2)
         with left_col:
