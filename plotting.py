@@ -9,8 +9,8 @@ df here - already sorted by Salary with all required fields
 def plot_salaries_hist(df):
     fig = px.bar(
         df,
-        x='Игрок',
-        y='Зарплата',
+        x='Player',
+        y='Salary',
         template='ggplot2',
         title='Зарплаты топ-5 ближайших по характеристикам игроков')
     return fig
